@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTreeTableView?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.effect.DisplacementMap?>
+<?import javafx.scene.effect.FloatMap?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<GridPane alignment="CENTER" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+   <children>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
+         <children>
+            <JFXTreeTableView fx:id="treeView" layoutY="36.0" prefHeight="189.0" prefWidth="483.0" />
+            <JFXButton buttonType="RAISED" layoutX="6.0" layoutY="3.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="83.0" ripplerFill="WHITE" text="COMPRAS">
+               <font>
+                  <Font name="Bebas" size="15.0" />
+               </font></JFXButton>
+            <JFXButton buttonType="RAISED" layoutX="89.0" layoutY="3.0" mnemonicParsing="false" text="VENTAS">
+               <font>
+                  <Font name="Bebas" size="15.0" />
+               </font></JFXButton>
+            <JFXButton buttonType="RAISED" layoutX="166.0" layoutY="3.0" mnemonicParsing="false" text="INVENTARIO">
+               <font>
+                  <Font name="Bebas" size="15.0" />
+               </font></JFXButton>
+         </children></AnchorPane>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+      <AnchorPane prefHeight="200.0" prefWidth="483.0" GridPane.columnIndex="2">
+         <children>
+            <Label contentDisplay="CENTER" layoutX="1.0" layoutY="66.0" prefHeight="68.0" prefWidth="483.0" text="LA   CASA   DE   LAS   FLORES" textAlignment="CENTER" textFill="#e40e80" textOverrun="CENTER_ELLIPSIS">
+               <font>
+                  <Font name="Bebas" size="48.0" />
+               </font>
+            </Label>
+            <Label alignment="TOP_LEFT" contentDisplay="CENTER" layoutX="1.0" layoutY="23.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="17.0" prefWidth="483.0" text="TECNOLOGICO NACIONAL DE MEXICO EN CELAYA" textAlignment="CENTER" textOverrun="CLIP" wrapText="true">
+               <font>
+                  <Font name="Tw Cen MT Condensed" size="34.0" />
+               </font>
+               <effect>
+                  <DisplacementMap>
+                     <mapData>
+                        <FloatMap />
+                     </mapData>
+                  </DisplacementMap>
+               </effect>
+               <cursor>
+                  <Cursor fx:constant="NONE" />
+               </cursor>
+            </Label>
+            <Label layoutX="154.0" layoutY="137.0" prefHeight="26.0" prefWidth="176.0" text="TALLER DE BASE DE DATOS">
+               <font>
+                  <Font name="Tw Cen MT Condensed" size="22.0" />
+               </font></Label>
+         </children></AnchorPane>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+      <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+      <ImageView fitHeight="200.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1">
+         <image>
+            <Image url="@../images/logo.png" />
+         </image>
+      </ImageView>
+      <SplitPane dividerPositions="0.5" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0" GridPane.columnIndex="3">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+               <children>
+                  <ImageView fitHeight="62.0" fitWidth="126.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/logotec.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="88.0" fitWidth="67.0" layoutX="122.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/logoitc.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="48.0" prefWidth="198.0">
+               <children>
+                  <ImageView fitHeight="88.0" fitWidth="198.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/logoAEISC.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+      
+   </children>
+   <columnConstraints>
+      <ColumnConstraints />
+      <ColumnConstraints />
+      <ColumnConstraints />
+      <ColumnConstraints />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+   </rowConstraints>
+</GridPane>
