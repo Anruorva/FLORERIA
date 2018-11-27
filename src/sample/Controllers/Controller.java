@@ -1,4 +1,4 @@
-package sample;
+package sample.Controllers;
 
 import com.jfoenix.controls.*;
 import com.jfoenix.controls.cells.editors.TextFieldEditorBuilder;
@@ -26,13 +26,10 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class Controller implements Initializable {
-
    @FXML
    JFXTreeTableView treeView;
-
     @Override
     public void initialize(URL location, ResourceBundle resources)
     {
-
-
-}}
+    }
+}

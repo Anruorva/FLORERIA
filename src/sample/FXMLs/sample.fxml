@@ -15,25 +15,14 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<GridPane alignment="CENTER" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+<GridPane alignment="CENTER" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controllers.Controller">
    <children>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
-         <children>
-            <JFXTreeTableView fx:id="treeView" layoutY="36.0" prefHeight="297.0" prefWidth="483.0" />
-            <JFXButton buttonType="RAISED" layoutX="6.0" layoutY="3.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="83.0" ripplerFill="RED" text="COMPRAS">
-               <font>
-                  <Font name="Bebas" size="15.0" />
-               </font></JFXButton>
-            <JFXButton buttonType="RAISED" layoutX="89.0" layoutY="3.0" mnemonicParsing="false" ripplerFill="#ffcc00" text="VENTAS">
-               <font>
-                  <Font name="Bebas" size="15.0" />
-               </font></JFXButton>
-            <JFXButton buttonType="RAISED" layoutX="166.0" layoutY="3.0" mnemonicParsing="false" ripplerFill="#00b900" text="INVENTARIO">
-               <font>
-                  <Font name="Bebas" size="15.0" />
-               </font></JFXButton>
-         </children></AnchorPane>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+         <fx:include source="AnchorMedio.fxml"></fx:include>
+      </AnchorPane>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="2" >
+         <fx:include source="AnchorBajoDerecho.fxml"/>
+      </AnchorPane>
       <AnchorPane prefHeight="200.0" prefWidth="483.0" GridPane.columnIndex="2">
          <children>
             <Label contentDisplay="CENTER" layoutX="1.0" layoutY="66.0" prefHeight="68.0" prefWidth="483.0" text="LA   CASA   DE   LAS   FLORES" textAlignment="CENTER" textFill="#e40e80" textOverrun="CENTER_ELLIPSIS">
@@ -61,26 +50,35 @@
                   <Font name="Tw Cen MT Condensed" size="22.0" />
                </font></Label>
          </children></AnchorPane>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-      <AnchorPane prefHeight="86.0" prefWidth="484.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" >
+         <fx:include source="AnchorIzquierdo.fxml"/>
+      </AnchorPane>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+         <fx:include source="AnchorBajoIzquierdo.fxml"/>
+      </AnchorPane>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="1" >
+         <fx:include source="AnchorDerecho.fxml"></fx:include>
+      </AnchorPane>
+      <AnchorPane prefHeight="86.0" prefWidth="484.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
+         <fx:include source="AnchorBajo.fxml"/>
+      </AnchorPane>
       <ImageView fitHeight="200.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1">
          <image>
-            <Image url="@../images/logo.png" />
+            <Image url="@../../images/logo.png" />
          </image>
       </ImageView>
-      <SplitPane dividerPositions="0.5" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0" GridPane.columnIndex="3">
+      <SplitPane dividerPositions="0.5"  orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0" GridPane.columnIndex="3">
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                <children>
                   <ImageView fitHeight="62.0" fitWidth="126.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../images/logotec.png" />
+                        <Image url="@../../images/logotec.png" />
                      </image>
                   </ImageView>
                   <ImageView fitHeight="88.0" fitWidth="67.0" layoutX="122.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../images/logoitc.png" />
+                        <Image url="@../../images/logoitc.png" />
                      </image>
                   </ImageView>
                </children>
@@ -89,7 +87,7 @@
                <children>
                   <ImageView fitHeight="88.0" fitWidth="198.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../images/logoAEISC.png" />
+                        <Image url="@../../images/logoAEISC.png" />
                      </image>
                   </ImageView>
                </children>

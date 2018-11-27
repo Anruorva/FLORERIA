@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.text.Font?>
+<?import com.jfoenix.controls.JFXTreeTableView?>
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="sample.Controllers.ControllerMedio">
+    <children>
+        <JFXTreeTableView fx:id="treeView" layoutY="36.0" prefHeight="297.0" prefWidth="483.0" />
+        <JFXButton buttonType="RAISED" layoutX="6.0" layoutY="3.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="83.0" ripplerFill="RED" text="COMPRAS">
+            <font>
+                <Font name="Bebas" size="15.0" />
+            </font></JFXButton>
+        <JFXButton buttonType="RAISED" layoutX="89.0" layoutY="3.0" mnemonicParsing="false" ripplerFill="#ffcc00" text="VENTAS">
+            <font>
+                <Font name="Bebas" size="15.0" />
+            </font></JFXButton>
+        <JFXButton buttonType="RAISED" layoutX="166.0" layoutY="3.0" mnemonicParsing="false" ripplerFill="#00b900" text="INVENTARIO">
+            <font>
+                <Font name="Bebas" size="15.0" />
+            </font></JFXButton>
+    </children>
+</AnchorPane>
