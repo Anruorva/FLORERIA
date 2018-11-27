@@ -10,7 +10,6 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
@@ -20,16 +19,16 @@
    <children>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
          <children>
-            <JFXTreeTableView fx:id="treeView" layoutY="36.0" prefHeight="189.0" prefWidth="483.0" />
-            <JFXButton buttonType="RAISED" layoutX="6.0" layoutY="3.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="83.0" ripplerFill="WHITE" text="COMPRAS">
+            <JFXTreeTableView fx:id="treeView" layoutY="36.0" prefHeight="297.0" prefWidth="483.0" />
+            <JFXButton buttonType="RAISED" layoutX="6.0" layoutY="3.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="83.0" ripplerFill="RED" text="COMPRAS">
                <font>
                   <Font name="Bebas" size="15.0" />
                </font></JFXButton>
-            <JFXButton buttonType="RAISED" layoutX="89.0" layoutY="3.0" mnemonicParsing="false" text="VENTAS">
+            <JFXButton buttonType="RAISED" layoutX="89.0" layoutY="3.0" mnemonicParsing="false" ripplerFill="#ffcc00" text="VENTAS">
                <font>
                   <Font name="Bebas" size="15.0" />
                </font></JFXButton>
-            <JFXButton buttonType="RAISED" layoutX="166.0" layoutY="3.0" mnemonicParsing="false" text="INVENTARIO">
+            <JFXButton buttonType="RAISED" layoutX="166.0" layoutY="3.0" mnemonicParsing="false" ripplerFill="#00b900" text="INVENTARIO">
                <font>
                   <Font name="Bebas" size="15.0" />
                </font></JFXButton>
@@ -63,9 +62,8 @@
                </font></Label>
          </children></AnchorPane>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-      <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
       <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+      <AnchorPane prefHeight="86.0" prefWidth="484.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
       <ImageView fitHeight="200.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1">
          <image>
             <Image url="@../images/logo.png" />
