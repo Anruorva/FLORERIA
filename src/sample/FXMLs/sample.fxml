@@ -58,12 +58,20 @@
       </AnchorPane>
       <AnchorPane prefHeight="333.0" prefWidth="278.0" GridPane.columnIndex="3" GridPane.rowIndex="1">
          <fx:include source="AnchorDerecho.fxml" />
-         <JFXButton fx:id="jfxButtunProcederPago" buttonType="RAISED" layoutX="88.0" layoutY="293.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="113.0" ripplerFill="#4e49ab" text="Proceder al Pago" />
+         <JFXButton fx:id="jfxButtunProcederPago" buttonType="RAISED" layoutX="100.0" layoutY="293.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="113.0" ripplerFill="#4e49ab" text="Proceder al Pago">
+            <font>
+               <Font name="Bebas" size="12.0" />
+            </font></JFXButton>
          <JFXTreeTableView layoutX="39.0" layoutY="80.0" prefHeight="200.0" prefWidth="200.0" />
-         <Label layoutX="61.0" layoutY="40.0" prefHeight="27.0" prefWidth="166.0" text="Agregar al carrito" textFill="#38bc40">
+         <Label layoutX="73.0" layoutY="40.0" prefHeight="27.0" prefWidth="166.0" text="Agregar al carrito" textFill="#38bc40">
             <font>
                <Font name="Bebas" size="19.0" />
             </font></Label>
+         <ImageView fitHeight="48.0" fitWidth="46.0" layoutX="16.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+               <Image url="@../../images/carrito.png" />
+            </image>
+         </ImageView>
       </AnchorPane>
       <AnchorPane prefHeight="86.0" prefWidth="484.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
          <fx:include source="AnchorBajo.fxml" />
