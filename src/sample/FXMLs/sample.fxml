@@ -15,13 +15,13 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<GridPane alignment="CENTER" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controllers.Controller">
+<GridPane alignment="CENTER" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controllers.Controller">
    <children>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
-         <fx:include source="AnchorMedio.fxml"></fx:include>
+      <AnchorPane prefHeight="333.0" prefWidth="418.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
+         <fx:include source="AnchorMedio.fxml" />
       </AnchorPane>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="2" >
-         <fx:include source="AnchorBajoDerecho.fxml"/>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="2">
+         <fx:include source="AnchorBajoDerecho.fxml" />
       </AnchorPane>
       <AnchorPane prefHeight="200.0" prefWidth="483.0" GridPane.columnIndex="2">
          <children>
@@ -50,24 +50,30 @@
                   <Font name="Tw Cen MT Condensed" size="22.0" />
                </font></Label>
          </children></AnchorPane>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" >
-         <fx:include source="AnchorIzquierdo.fxml"/>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+         <fx:include source="AnchorIzquierdo.fxml" />
       </AnchorPane>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
-         <fx:include source="AnchorBajoIzquierdo.fxml"/>
+         <fx:include source="AnchorBajoIzquierdo.fxml" />
       </AnchorPane>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="1" >
-         <fx:include source="AnchorDerecho.fxml"></fx:include>
+      <AnchorPane prefHeight="333.0" prefWidth="278.0" GridPane.columnIndex="3" GridPane.rowIndex="1">
+         <fx:include source="AnchorDerecho.fxml" />
+         <JFXButton fx:id="jfxButtunProcederPago" buttonType="RAISED" layoutX="88.0" layoutY="293.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="113.0" ripplerFill="#4e49ab" text="Proceder al Pago" />
+         <JFXTreeTableView layoutX="39.0" layoutY="80.0" prefHeight="200.0" prefWidth="200.0" />
+         <Label layoutX="61.0" layoutY="40.0" prefHeight="27.0" prefWidth="166.0" text="Agregar al carrito" textFill="#38bc40">
+            <font>
+               <Font name="Bebas" size="19.0" />
+            </font></Label>
       </AnchorPane>
       <AnchorPane prefHeight="86.0" prefWidth="484.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
-         <fx:include source="AnchorBajo.fxml"/>
+         <fx:include source="AnchorBajo.fxml" />
       </AnchorPane>
       <ImageView fitHeight="200.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1">
          <image>
             <Image url="@../../images/logo.png" />
          </image>
       </ImageView>
-      <SplitPane dividerPositions="0.5"  orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0" GridPane.columnIndex="3">
+      <SplitPane dividerPositions="0.5" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0" GridPane.columnIndex="3">
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                <children>
