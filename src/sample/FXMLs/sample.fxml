@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
 <?import com.jfoenix.controls.JFXTreeTableView?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
@@ -22,6 +23,25 @@
       </AnchorPane>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="2">
          <fx:include source="AnchorBajoDerecho.fxml" />
+         <JFXButton layoutX="139.0" layoutY="143.0" mnemonicParsing="false" ripplerFill="#b93737" text="Pagar">
+            <font>
+               <Font name="Bebas" size="12.0" />
+            </font></JFXButton>
+         <Label layoutX="210.0" layoutY="27.0" text="SubTotal">
+            <font>
+               <Font name="Bebas" size="12.0" />
+            </font></Label>
+         <Label layoutX="210.0" layoutY="75.0" text="IVA">
+            <font>
+               <Font name="Bebas" size="12.0" />
+            </font></Label>
+         <Label layoutX="210.0" layoutY="109.0" text="Total">
+            <font>
+               <Font name="Bebas" size="12.0" />
+            </font></Label>
+         <JFXTextField layoutX="56.0" layoutY="10.0" />
+         <JFXTextField layoutX="56.0" layoutY="58.0" />
+         <JFXTextField layoutX="56.0" layoutY="92.0" />
       </AnchorPane>
       <AnchorPane prefHeight="200.0" prefWidth="483.0" GridPane.columnIndex="2">
          <children>
