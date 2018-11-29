@@ -54,7 +54,7 @@
       <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
          <fx:include source="AnchorBajoIzquierdo.fxml" />
       </AnchorPane>
-      <AnchorPane prefHeight="333.0" prefWidth="278.0" GridPane.columnIndex="3" GridPane.rowIndex="1">
+      <AnchorPane prefHeight="333.0" prefWidth="206.0" GridPane.columnIndex="3" GridPane.rowIndex="1">
          <fx:include source="AnchorDerecho.fxml" />
       </AnchorPane>
       <AnchorPane prefHeight="86.0" prefWidth="484.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
