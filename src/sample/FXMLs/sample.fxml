@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXRadioButton?>
-<?import com.jfoenix.controls.JFXTextField?>
 <?import com.jfoenix.controls.JFXTreeTableView?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
@@ -24,35 +22,6 @@
       </AnchorPane>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="2">
          <fx:include source="AnchorBajoDerecho.fxml" />
-         <JFXButton layoutX="159.0" layoutY="135.0" mnemonicParsing="false" ripplerFill="#55c931" text="Pagar" textFill="#360f8a">
-            <font>
-               <Font name="Bebas" size="12.0" />
-            </font></JFXButton>
-         <Label layoutX="195.0" layoutY="38.0" prefHeight="17.0" prefWidth="52.0" text="Subtotal">
-            <font>
-               <Font name="Bebas" size="12.0" />
-            </font></Label>
-         <Label layoutX="202.0" layoutY="69.0" prefHeight="17.0" prefWidth="19.0" text="iva">
-            <font>
-               <Font name="Bebas" size="12.0" />
-            </font></Label>
-         <Label layoutX="195.0" layoutY="105.0" prefHeight="13.0" prefWidth="33.0" text="Total">
-            <font>
-               <Font name="Bebas" size="12.0" />
-            </font></Label>
-         <JFXTextField layoutX="121.0" layoutY="21.0" prefHeight="25.0" prefWidth="62.0" />
-         <JFXTextField layoutX="121.0" layoutY="52.0" prefHeight="25.0" prefWidth="62.0" />
-         <JFXTextField layoutX="121.0" layoutY="86.0" prefHeight="25.0" prefWidth="62.0" />
-         <JFXRadioButton fx:id="fxRadioButtonEfectivo" layoutX="12.0" layoutY="71.0" mnemonicParsing="false" prefHeight="6.0" prefWidth="70.0" text="Efectivo">
-            <font>
-               <Font name="Bebas" size="12.0" />
-            </font>
-         </JFXRadioButton>
-         <JFXRadioButton fx:id="fxRadioButtonTarjeta" layoutX="12.0" layoutY="112.0" mnemonicParsing="false" prefHeight="13.0" prefWidth="91.0" text="Tarjeta">
-            <font>
-               <Font name="Bebas" size="12.0" />
-            </font>
-         </JFXRadioButton>
       </AnchorPane>
       <AnchorPane prefHeight="200.0" prefWidth="483.0" GridPane.columnIndex="2">
          <children>
