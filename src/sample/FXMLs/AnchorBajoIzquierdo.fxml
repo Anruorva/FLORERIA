@@ -8,6 +8,8 @@
 
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="sample.Controllers.ControllerBajoIzquierdo">
+            fx:controller="sample.Controllers.ControllerBajoIzquierdo"
+            prefHeight="100"
+            prefWidth="100">
 
 </AnchorPane>
