@@ -28,12 +28,12 @@
       <JFXTextField layoutX="138.0" layoutY="38.0" prefHeight="5.0" prefWidth="72.0" />
       <JFXTextField layoutX="137.0" layoutY="5.0" prefHeight="25.0" prefWidth="73.0" />
       <JFXTextField layoutX="138.0" layoutY="68.0" prefHeight="25.0" prefWidth="79.0" />
-      <JFXRadioButton layoutX="33.0" layoutY="32.0" mnemonicParsing="false" prefHeight="13.0" prefWidth="60.0" text="EFECTIVO">
+      <JFXRadioButton fx:id="radioButtonEfectivo" layoutX="34.0" layoutY="32.0" mnemonicParsing="false" prefHeight="13.0" prefWidth="60.0" text="EFECTIVO">
          <font>
             <Font name="Bebas" size="12.0" />
          </font>
       </JFXRadioButton>
-      <JFXRadioButton layoutX="33.0" layoutY="74.0" mnemonicParsing="false" prefHeight="6.0" prefWidth="43.0" text="TARJETA">
+      <JFXRadioButton fx:id="radioButtonTarjeta" layoutX="34.0" layoutY="74.0" mnemonicParsing="false" prefHeight="6.0" prefWidth="43.0" text="TARJETA">
          <font>
             <Font name="Bebas" size="12.0" />
          </font>
