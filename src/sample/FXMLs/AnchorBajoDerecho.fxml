@@ -1,5 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXRadioButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="100" prefWidth="100" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controllers.ControlerBajoDerecho" />
+
+<AnchorPane prefHeight="100" prefWidth="100" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controllers.ControlerBajoDerecho">
+   <children>
+      <Label layoutX="214.0" layoutY="21.0" prefHeight="17.0" prefWidth="60.0" text="Subtotal">
+         <font>
+            <Font name="Bebas" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="229.0" layoutY="57.0" text="IVA">
+         <font>
+            <Font name="Bebas" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="229.0" layoutY="87.0" text="Total">
+         <font>
+            <Font name="Bebas" size="12.0" />
+         </font>
+      </Label>
+      <JFXTextField layoutX="138.0" layoutY="38.0" prefHeight="5.0" prefWidth="72.0" />
+      <JFXTextField layoutX="137.0" layoutY="5.0" prefHeight="25.0" prefWidth="73.0" />
+      <JFXTextField layoutX="138.0" layoutY="68.0" prefHeight="25.0" prefWidth="79.0" />
+      <JFXRadioButton layoutX="33.0" layoutY="32.0" mnemonicParsing="false" prefHeight="13.0" prefWidth="60.0" text="EFECTIVO">
+         <font>
+            <Font name="Bebas" size="12.0" />
+         </font>
+      </JFXRadioButton>
+      <JFXRadioButton layoutX="33.0" layoutY="74.0" mnemonicParsing="false" prefHeight="6.0" prefWidth="43.0" text="TARJETA">
+         <font>
+            <Font name="Bebas" size="12.0" />
+         </font>
+      </JFXRadioButton>
+      <JFXButton layoutX="126.0" layoutY="118.0" mnemonicParsing="false" ripplerFill="#0c0d57" text="PAGAR" textFill="#10793d" textOverrun="CLIP">
+         <font>
+            <Font name="Bebas" size="12.0" />
+         </font>
+      </JFXButton>
+   </children>
+</AnchorPane>
