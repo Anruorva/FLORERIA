@@ -1,22 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-
 <?import com.jfoenix.controls.JFXButton?>
-<?import javafx.scene.text.Font?>
 <?import com.jfoenix.controls.JFXTreeTableView?>
-<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="sample.Controllers.ControllerDerecho"
-            prefHeight="100"
-            prefWidth="100">
-    <JFXButton fx:id="jfxButtunProcederPago" buttonType="RAISED" layoutX="100.0" layoutY="293.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="113.0" ripplerFill="#4e49ab" text="Proceder al Pago">
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="100" prefWidth="100" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controllers.ControllerDerecho">
+    <JFXButton fx:id="jfxButtunProcederPago" buttonType="RAISED" layoutX="112.0" layoutY="292.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="113.0" ripplerFill="#4e49ab" text="Proceder al Pago">
         <font>
             <Font name="Bebas" size="12.0" />
         </font></JFXButton>
@@ -30,4 +23,5 @@
             <Image url="@../../images/carrito.png" />
         </image>
     </ImageView>
+   <JFXButton fx:id="btnEliminar" layoutX="47.0" layoutY="292.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="14.0" text="." />
 </AnchorPane>
