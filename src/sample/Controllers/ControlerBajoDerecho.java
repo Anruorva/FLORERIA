@@ -18,6 +18,5 @@ public class ControlerBajoDerecho implements Initializable{
         ToggleGroup group = new ToggleGroup();
         radioButtonEfectivo.setToggleGroup(group);
         radioButtonTarjeta.setToggleGroup(group);
-        System.out.println("Push");
     }
 }

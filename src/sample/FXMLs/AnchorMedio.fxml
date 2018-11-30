@@ -15,7 +15,7 @@
             prefHeight="100"
             prefWidth="100">
     <children>
-        <JFXTreeTableView fx:id="treeView" layoutY="36.0" prefHeight="297.0" prefWidth="483.0" />
+        <TableView fx:id="tbl" layoutY="36.0" prefHeight="297.0" prefWidth="483.0" />
         <JFXButton buttonType="RAISED" layoutX="6.0" layoutY="3.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="83.0" ripplerFill="RED" text="COMPRAS">
             <font>
                 <Font name="Bebas" size="15.0" />
