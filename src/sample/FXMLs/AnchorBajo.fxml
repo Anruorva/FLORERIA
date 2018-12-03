@@ -3,12 +3,13 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane
-        prefHeight="50"
-        prefWidth="50"
-        xmlns="http://javafx.com/javafx/8.0.172-ea"
-        xmlns:fx="http://javafx.com/fxml/1"
-        fx:controller="sample.Controllers.ControllerBajo">
-
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.text.Font?>
+<AnchorPane id="btnAgregar" prefHeight="50" prefWidth="50" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controllers.ControllerBajo">
+   <children>
+       <JFXButton buttonType="RAISED"  fx:id="btnAgregarCarrito" layoutX="6.0" layoutY="3.0" mnemonicParsing="false" prefHeight="26.0" ripplerFill="RED" text="Agregar a carrito">
+           <font>
+               <Font name="Bebas" size="15.0" />
+           </font></JFXButton>
+   </children>
 </AnchorPane>

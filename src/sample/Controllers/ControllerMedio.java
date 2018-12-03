@@ -17,7 +17,7 @@ public class ControllerMedio implements Initializable {
     MySQL mySQL= new MySQL();
     JardineriaDAO jardineriaDAO= new JardineriaDAO(mySQL.getConnection());
     @FXML
-    TableView tbl;
+    public TableView tbl;
     @Override
     public void initialize(URL location, ResourceBundle resources)
     {
