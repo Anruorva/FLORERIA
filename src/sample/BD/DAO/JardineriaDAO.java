@@ -284,6 +284,20 @@ public class JardineriaDAO {
             rs.close();
             st.close();
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         } catch (SQLException ex) {
             ex.printStackTrace();
             System.out.println("Error al recuperar información...");

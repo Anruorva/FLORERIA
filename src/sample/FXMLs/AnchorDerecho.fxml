@@ -2,26 +2,26 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXTreeTableView?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="100" prefWidth="100" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controllers.ControllerDerecho">
+<AnchorPane prefHeight="100" prefWidth="100" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controllers.ControllerDerecho">
     <JFXButton fx:id="jfxButtunProcederPago" buttonType="RAISED" layoutX="112.0" layoutY="292.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="113.0" ripplerFill="#4e49ab" text="Proceder al Pago">
         <font>
             <Font name="Bebas" size="12.0" />
         </font></JFXButton>
     <JFXTreeTableView layoutX="39.0" layoutY="80.0" prefHeight="200.0" prefWidth="200.0" />
-    <Label layoutX="73.0" layoutY="40.0" prefHeight="27.0" prefWidth="166.0" text="CARRITO" textFill="#38bc40">
-        <font>
-            <Font name="Bebas" size="19.0" />
-        </font></Label>
     <ImageView fitHeight="48.0" fitWidth="46.0" layoutX="16.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true">
         <image>
             <Image url="@../../images/carrito.png" />
         </image>
     </ImageView>
    <JFXButton fx:id="btnEliminar" layoutX="47.0" layoutY="292.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="14.0" text="." />
+   <JFXButton layoutX="61.0" layoutY="43.0" mnemonicParsing="false" ripplerFill="#36c98a" text="Agregar al carrito" textFill="#2bcd33">
+      <font>
+         <Font name="Bebas" size="12.0" />
+      </font>
+   </JFXButton>
 </AnchorPane>

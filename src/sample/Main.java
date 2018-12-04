@@ -14,6 +14,7 @@ public class Main extends Application {
         primaryStage.setTitle("FLORERIA DE LA A RITA ");
         primaryStage.setScene(new Scene(root, 1000, 600));
         primaryStage.show();
+
     }
 
 
