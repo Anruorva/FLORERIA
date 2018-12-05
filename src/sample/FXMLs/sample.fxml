@@ -1,8 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXRadioButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import com.jfoenix.controls.JFXTreeTableView?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.effect.DisplacementMap?>
 <?import javafx.scene.effect.FloatMap?>
 <?import javafx.scene.image.Image?>
@@ -11,18 +20,10 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<?import com.jfoenix.controls.JFXButton?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.layout.StackPane?>
-<?import javafx.geometry.Insets?>
-<?import com.jfoenix.controls.JFXTextField?>
-<?import com.jfoenix.controls.JFXPasswordField?>
-<?import com.jfoenix.controls.JFXTreeTableView?>
-<?import com.jfoenix.controls.JFXRadioButton?>
-<?import com.jfoenix.controls.JFXComboBox?>
-<GridPane alignment="CENTER" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controllers.Controller">
+<GridPane alignment="CENTER" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controllers.Controller">
    <children>
       <AnchorPane prefHeight="333.0" prefWidth="418.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
          <children>
@@ -35,7 +36,7 @@
                <font>
                   <Font name="Bebas" size="15.0" />
                </font></JFXButton>
-            <JFXButton buttonType="RAISED" layoutX="166.0" layoutY="3.0" mnemonicParsing="false" ripplerFill="#00b900" text="INVENTARIO">
+            <JFXButton fx:id="btnInventario" buttonType="RAISED" layoutX="166.0" layoutY="3.0" mnemonicParsing="false" ripplerFill="#00b900" text="INVENTARIO">
                <font>
                   <Font name="Bebas" size="15.0" />
                </font></JFXButton>
@@ -61,7 +62,7 @@
             <JFXTextField editable="false" layoutX="138.0" layoutY="38.0" prefHeight="5.0" prefWidth="72.0" />
             <JFXTextField editable="false" layoutX="137.0" layoutY="5.0" prefHeight="25.0" prefWidth="73.0" />
             <JFXTextField editable="false" layoutX="138.0" layoutY="68.0" prefHeight="25.0" prefWidth="79.0" />
-            <JFXRadioButton fx:id="radioButtonEfectivo"  layoutX="33.0" layoutY="32.0" mnemonicParsing="false" prefHeight="13.0" prefWidth="60.0" selected="true" text="EFECTIVO">
+            <JFXRadioButton fx:id="radioButtonEfectivo" layoutX="33.0" layoutY="32.0" mnemonicParsing="false" prefHeight="13.0" prefWidth="60.0" selected="true" text="EFECTIVO">
                <font>
                   <Font name="Bebas" size="12.0" />
                </font>
@@ -118,12 +119,13 @@
                            <Image url="@../../images/usuario.png" />
                         </image>
                      </ImageView>
+                     <Label fx:id="txtIdEmpleado" layoutX="132.0" layoutY="105" prefHeight="25.0" prefWidth="60.0" text="0000"><font><Font name="Bebas" size="12.0" /></font></Label>
                      <Label layoutX="12.0" layoutY="139.0" prefHeight="49.0" prefWidth="48.0" text="Usuario:">
                         <font>
                            <Font name="Bebas" size="12.0" />
                         </font>
                      </Label>
-                     <JFXTextField fx:id="textUsuario" layoutX="77.0" layoutY="145.0" prefHeight="25.0" prefWidth="185.0" />
+                     <JFXTextField fx:id="txtUsuario" layoutX="77.0" layoutY="145.0" prefHeight="25.0" prefWidth="185.0" />
                      <Label layoutX="6.0" layoutY="213.0" prefHeight="25.0" prefWidth="60.0" text="Password:">
                         <font>
                            <Font name="Bebas" size="12.0" />
@@ -147,13 +149,10 @@
 
       </AnchorPane>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
-         <Label layoutX="20.0"  prefHeight="25.0" prefWidth="60.0" text="Clienete:">
-            <font>
-               <Font name="Bebas" size="12.0" />
-            </font>
-         </Label>
-         <JFXComboBox layoutX="20.0" layoutY="30.0" prefWidth="200" fx:id="cbClientes"> </JFXComboBox>
-         <JFXButton   layoutX="20.0" layoutY="70.0" text="Registrar Cliente" fx:id="btnRegistrarCliente">
+         <Label layoutX="20.0" prefHeight="25.0" prefWidth="60.0" text="Clienete:"><font><Font name="Bebas" size="12.0" /></font></Label>
+         <Label fx:id="txtIdCliente" layoutX="80.0" prefHeight="25.0" prefWidth="60.0" text="000000000"><font><Font name="Bebas" size="12.0" /></font></Label>
+         <JFXComboBox fx:id="cboxClientes" layoutX="20.0" layoutY="30.0" prefWidth="200"> </JFXComboBox>
+         <JFXButton fx:id="btnRegistrarCliente" layoutX="20.0" layoutY="70.0" text="Registrar Cliente">
             <font>
                <Font name="Bebas" size="15.0" />
             </font>
@@ -171,14 +170,39 @@
             </image>
          </ImageView>
          <JFXButton fx:id="btnEliminar" layoutX="47.0" layoutY="292.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="14.0" text="." />
-         <JFXButton layoutX="61.0" layoutY="43.0" mnemonicParsing="false" ripplerFill="#36c98a" text="Agregar al carrito" textFill="#2bcd33">
+         <JFXButton fx:id="btnAgregarCarro" layoutX="61.0" layoutY="43.0" mnemonicParsing="false" ripplerFill="#36c98a" text="Agregar al carrito" textFill="#2bcd33">
             <font>
                <Font name="Bebas" size="12.0" />
             </font>
          </JFXButton>
       </AnchorPane>
       <AnchorPane prefHeight="86.0" prefWidth="484.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
-
+         <Label prefWidth="60.0" text="Pedido: "><font><Font name="Bebas" size="12.0" /></font></Label>
+         <Label fx:id="txtPedido" layoutX="65" prefWidth="60.0" text="000000"><font><Font name="Bebas" size="15.0" /></font></Label>
+         <Label layoutX="205" prefWidth="120" text="Cambiar Pedido"><font><Font name="Bebas" size="13.0" /></font></Label>
+         <JFXComboBox fx:id="cboxPedido" layoutX="300" prefWidth="150" />
+         <JFXButton fx:id="btnNuevoPedido" layoutX="450" text="Nuevo Pedido">
+            <font>
+               <Font name="Bebas" size="15.0" />
+            </font>
+         </JFXButton>
+         <AnchorPane fx:id="anchorNewPedido" layoutY="40" visible="false">
+            <Label layoutY="10" prefWidth="120" text="Fecha de envio:"><font><Font name="Bebas" size="13.0" /></font></Label>
+            <JFXDatePicker fx:id="dateEnvio" layoutX="110" prefWidth="120" />
+            <Label layoutY="40" prefWidth="120" text="Fecha de entrega:"><font><Font name="Bebas" size="13.0" /></font></Label>
+            <JFXDatePicker fx:id="dateEntrega" layoutX="110" layoutY="30" prefWidth="120" />
+            <Label layoutY="80" prefWidth="70" text="Ruta:"><font><Font name="Bebas" size="13.0" /></font></Label>
+            <JFXTextField fx:id="txtRuta" layoutX="50" layoutY="70" prefWidth="175" />
+            <Label layoutX="300" layoutY="10" prefWidth="80.0" text="Nuevo pedido: "><font><Font name="Bebas" size="12.0" /></font></Label>
+            <JFXTextField fx:id="txtNuevoPedido" layoutX="380" layoutY="5" prefWidth="60.0" text="PDI0000" />
+            <Label layoutX="300" layoutY="50" prefWidth="90" text="Transportista:"><font><Font name="Bebas" size="13.0" /></font></Label>
+            <JFXComboBox fx:id="cboxTransportista" layoutX="400" layoutY="40" prefWidth="200" />
+            <JFXButton fx:id="btnRegistrarPedido" layoutX="400" layoutY="90" text="registrar">
+               <font>
+                  <Font name="Bebas" size="15.0" />
+               </font>
+            </JFXButton>
+         </AnchorPane>
       </AnchorPane>
       <ImageView fitHeight="200.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1">
          <image>

@@ -1,31 +1,47 @@
 package sample.Controllers;
 
 import com.jfoenix.controls.*;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import sample.BD.DAO.JardineriaDAO;
+import sample.BD.Model.Pedido;
 import sample.BD.Model.Producto;
 import sample.BD.MySQL;
 
 import java.net.URL;
+import java.sql.Date;
 import java.util.ResourceBundle;
 
 
 public class Controller implements Initializable {
     @FXML
-    JFXRadioButton radioButtonEfectivo;
+    JFXRadioButton radioButtonEfectivo,radioButtonTarjeta;
     @FXML
-    JFXRadioButton radioButtonTarjeta;
+    JFXButton btnEliminar, btnNuevoPedido, btnAcceso, btnRegistrarPedido, btnAgregarCarro;
     @FXML
-    JFXButton btnEliminar;
+    TableView tbl;
     @FXML
-    public TableView tbl;
+    Label txtIdCliente, txtIdEmpleado, txtPedido;
+    @FXML
+    JFXComboBox<String> cboxTransportista, cboxClientes, cboxPedido;
+    @FXML
+    AnchorPane anchorNewPedido;
+    @FXML
+    JFXTextField txtNuevoPedido, txtRuta, txtUsuario;
+    @FXML
+    JFXPasswordField  txtPassword ;
+    @FXML
+    JFXDatePicker dateEntrega, dateEnvio;
     MySQL mySQL= new MySQL();
     JardineriaDAO jardineriaDAO= new JardineriaDAO(mySQL.getConnection());
     @Override
@@ -37,6 +53,57 @@ public class Controller implements Initializable {
         colocarImagenesBotones();
         btnEliminar.setDisable(false);
         initProductos(null);
+        llebnarCombox();
+        btnRegistrarPedido.setOnAction(handler);
+        btnNuevoPedido.setOnAction(handler);
+        btnAcceso.setOnAction(handler);
+        cboxClientes.setOnAction(handler);
+        cboxPedido.setOnAction(handler);
+        btnAgregarCarro.setOnAction(handler);
+    }
+    public void llebnarCombox(){
+        cboxTransportista.getItems().clear();
+        cboxPedido.getItems().clear();
+        cboxClientes.getItems().clear();
+        cboxClientes.setItems(jardineriaDAO.cboxCientes());
+        cboxPedido.setItems(jardineriaDAO.cboxPedidos());
+        cboxTransportista.setItems(jardineriaDAO.cboxTransportistas());
+    }
+    EventHandler<ActionEvent> handler = new EventHandler<ActionEvent>() {
+        @Override
+        public void handle(ActionEvent event) {
+                if (event.getSource() == btnNuevoPedido) anchorNewPedido.setVisible(true);
+                if (event.getSource() == btnRegistrarPedido) btnPedidoo();
+                if (event.getSource() == cboxClientes)
+                    txtIdCliente.setText(cboxClientes.getSelectionModel().getSelectedItem().toString().split("-")[0]);
+                if (event.getSource() == cboxPedido)
+                    txtPedido.setText(cboxPedido.getSelectionModel().getSelectedItem().toString());
+                if (event.getSource() == btnAcceso) {
+                    if (jardineriaDAO.validEmpleado(txtUsuario.getText(), txtPassword.getText()))
+                        txtIdEmpleado.setText(txtUsuario.getText());
+                }
+                if (event.getSource() == btnAgregarCarro) {
+                    agregarCarro();
+                }
+        }
+    };
+    void btnPedidoo (){
+        if(
+        jardineriaDAO.insertPedido(new Pedido(txtNuevoPedido.getText(),
+                txtRuta.getText(),
+                cboxTransportista.getSelectionModel().getSelectedItem().toString().split("-")[0],
+                txtIdEmpleado.getText(),
+                txtIdCliente.getText(),
+                Date.valueOf(dateEnvio.getValue()),
+                Date.valueOf(dateEntrega.getValue())))){
+            txtPedido.setText(txtNuevoPedido.getText());
+            anchorNewPedido.setVisible(false);
+            cboxPedido.getItems().clear();
+            cboxPedido.setItems(jardineriaDAO.cboxPedidos());
+        }
+    }
+    void agregarCarro(){
+
     }
     private void colocarImagenesBotones(){
         URL link = getClass().getResource("/images/eliminar.png");

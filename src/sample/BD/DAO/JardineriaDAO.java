@@ -13,6 +13,26 @@ public class JardineriaDAO {
     {
         this.conn = conn;
     }
+    public ObservableList<String> cboxPedidos(){
+        ObservableList<String> codigos = FXCollections.observableArrayList();
+        try {
+            String query = "SELECT Id_pedido FROM Pedido";
+            Statement st = conn.createStatement();
+            ResultSet rs = st.executeQuery(query);
+            String p = null;
+            while(rs.next()) {
+                p = rs.getString(1);
+                codigos.add(p);
+            }
+            rs.close();
+            st.close();
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            System.out.println("Error al recuperar información...");
+        }
+        return codigos;
+    }
     public ObservableList<String> cboxCodigoPostal(){
         ObservableList<String> codigos = FXCollections.observableArrayList();
         try {
@@ -175,29 +195,7 @@ public class JardineriaDAO {
         }
         return consultass;
     }
-    public ObservableList<Pedido> fetchPedidos(){
-        ObservableList<Pedido> pedidos = FXCollections.observableArrayList();
-        try {
-            String query = "SELECT * FROM Pedido";
-            Statement st = conn.createStatement();
-            ResultSet rs = st.executeQuery(query);
-            Pedido p = null;
-            while(rs.next()) {
-                p = new Pedido(
-                        rs.getString("Id_pedido") , rs.getString("Ruta_envio"), rs.getString("Id_transportista"),
-                        rs.getString("Id_empleado"), rs.getString("Id_cliente"), rs.getDate("Fecha_envio"),
-                        rs.getDate("Fecha_pedido"), rs.getDate("Fecha_objetivo"), rs.getDate("Fecha_entrega"));
-                pedidos.add(p);
-            }
-            rs.close();
-            st.close();
 
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-            System.out.println("Error al recuperar información...");
-        }
-        return pedidos;
-    }
     public ObservableList<Cliente> fetchClientes(){
         ObservableList<Cliente>  clientes= FXCollections.observableArrayList();
         try {
@@ -481,26 +479,14 @@ public class JardineriaDAO {
         }
         return false;
     }
-    public Boolean updateEmpleado(Empleado empleado) {
+    public Boolean validEmpleado(String ID, String Con) {
         try {
-            String query = "update Empleado "
-                    + " set  Nombre_empleado=?, Apellido_empleado=?, Puesto_empleado=?, Direccion_empleado=?, " +
-                    "Telefono_empleado=?, Fecha_nacimiento=?, Fecha_contratacion=?, Id_codigo_postal=?"
-                    + " where Id_empleado=?";
-            System.out.println(query + "updating....");
-            PreparedStatement st =  conn.prepareStatement(query);
-
-            st.setString(1, empleado.getNombre());
-            st.setString(2, empleado.getApellido());
-            st.setString(3, empleado.getPuesto());
-            st.setString(4, empleado.getDireccion());
-            st.setString(5, empleado.getTelefono());
-            st.setDate(6, empleado.getFch_nacimiento());
-            st.setDate(7, empleado.getFch_contratacion());
-            st.setString(8, empleado.getId_postal());
-            st.setString(9, empleado.getId());
-            st.execute();
-            return true;
+            String query = "select Id_empleado from Empleado " +
+                    "where Id_empleado = '"+ID+"' and  Contraseña = '"+Con+"'";
+            Statement st =  conn.createStatement();
+            ResultSet rs = st.executeQuery(query);
+            if(rs.next())
+                return true;
         } catch (Exception e) {
             e.printStackTrace();
             System.out.println(e.getMessage());
@@ -545,19 +531,15 @@ public class JardineriaDAO {
     }
     public Boolean insertPedido(Pedido pedido) {
         try {
-            String query = "INSERT INTO Pedido (Id_pedido, Fecha_pedido, Fecha_envio, Ruta_envio, Fecha_objetivo, Fecha_entrega," +
-                    " Id_cliente,Id_transportista, Id_empleado)"
-                    + " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);";
+            String query = "call insertaPedido(?, ?, ?, ?, ?, ?, ?);";
             PreparedStatement st =  conn.prepareStatement(query);
             st.setString(1, pedido.getId());
-            st.setDate(2, pedido.getFch_pedido());
+            st.setDate(2, pedido.getFch_entrega());
             st.setDate(3, pedido.getFch_envio());
             st.setString(4, pedido.getRuta_envio());
-            st.setDate(5, pedido.getFch_objetivo());
-            st.setDate(6, pedido.getFch_entrega());
-            st.setString(7, pedido.getId_cliente());
-            st.setString(8, pedido.getId_transportista());
-            st.setString(9, pedido.getId_empleado());
+            st.setString(5, pedido.getId_cliente());
+            st.setString(6, pedido.getId_transportista());
+            st.setString(7, pedido.getId_empleado());
             st.execute();
             return true;
         } catch (Exception e) {
@@ -583,30 +565,7 @@ public class JardineriaDAO {
         }
         return false;
     }
-    public Boolean updatePedido(Pedido pedido) {
-        try {
-            String query = "UPDATE Pedido set Fecha_pedido=?, Fecha_envio=?, Ruta_envio=?, Fecha_objetivo=?, Fecha_entrega=?," +
-                    " Id_cliente=?,Id_transportista=?, Id_empleado=? "
-                    + " WHERE Id_pedido=?;";
-            PreparedStatement st =  conn.prepareStatement(query);
-            st.setDate(1, pedido.getFch_pedido());
-            st.setDate(2, pedido.getFch_envio());
-            st.setString(3, pedido.getRuta_envio());
-            st.setDate(4, pedido.getFch_objetivo());
-            st.setDate(5, pedido.getFch_entrega());
-            st.setString(6, pedido.getId_cliente());
-            st.setString(7, pedido.getId_transportista());
-            st.setString(8, pedido.getId_empleado());
-            st.setString(9, pedido.getId());
-            st.execute();
-            return true;
-        } catch (Exception e) {
-            e.printStackTrace();
-            System.out.println(e.getMessage());
-        }
 
-        return false;
-    }
     public Boolean insertProducto(Producto producto) {
         try {
             String query = "INSERT INTO Producto (Id_producto, Nombre_producto, Nombre_latin, Precio_compra_producto, " +
