@@ -1,12 +1,38 @@
 package sample.BD.Model;
 
 public class Cliente {
-    String id, nombre, apellido;
+    String id, nombre, apellido, telefono, cp, direccion;
 
-    public Cliente(String id, String nombre, String apellido) {
+    public Cliente(String id, String nombre, String apellido, String telefono, String cp, String direccion) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
+        this.telefono = telefono;
+        this.cp = cp;
+        this.direccion = direccion;
+    }
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
+
+    public String getCp() {
+        return cp;
+    }
+
+    public void setCp(String cp) {
+        this.cp = cp;
+    }
+
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
     }
 
     public String getId() {

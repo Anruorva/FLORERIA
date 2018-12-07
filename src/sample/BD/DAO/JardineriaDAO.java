@@ -36,7 +36,7 @@ public class JardineriaDAO {
     public ObservableList<String> cboxCodigoPostal(){
         ObservableList<String> codigos = FXCollections.observableArrayList();
         try {
-            String query = "SELECT Id_codigo_postal FROM codigo_postal";
+            String query = "SELECT Id_codigo_postal FROM Codigo_postal";
             Statement st = conn.createStatement();
             ResultSet rs = st.executeQuery(query);
             String p = null;
@@ -205,7 +205,7 @@ public class JardineriaDAO {
             Cliente p = null;
             while(rs.next()) {
                 p = new Cliente(
-                        rs.getString("Id_cliente") , rs.getString("Nombre_cliente"), rs.getString("Apellido_cliente"));
+                        rs.getString("Id_cliente") , rs.getString("Nombre_cliente"), rs.getString("Apellido_cliente"), null, null, null);
                 clientes.add(p);
             }
             rs.close();
@@ -217,21 +217,16 @@ public class JardineriaDAO {
         }
         return clientes;
     }
-    public ObservableList<Categoria> fetchCategorias(String id_P){
-        ObservableList<Categoria>  categorias= FXCollections.observableArrayList();
+    public String tipoEmp(String id_e){
+        String  tipo= "";
         try {
             String query;
-            if(id_P==null)
-                query = "SELECT * FROM Categoria";
-            else
-                query = "SELECT c.* FROM Categoria c inner join Categoria_producto cp on c.Id_categoria=cp.Id_categoria where cp.Id_producto = '"+id_P+"';";
+            query = "SELECT Puesto_empleado FROM Empleado where Id_empleado =  '"+id_e+"';";
             Statement st = conn.createStatement();
             ResultSet rs = st.executeQuery(query);
             Categoria p = null;
-            while(rs.next()) {
-                p = new Categoria(
-                        rs.getString("Id_categoria") , rs.getString("Nombre_categoria"), rs.getString("Descripcion_categoria"));
-                categorias.add(p);
+            if(rs.next()) {
+                tipo= rs.getString("Puesto_empleado");
             }
             rs.close();
             st.close();
@@ -240,7 +235,7 @@ public class JardineriaDAO {
             ex.printStackTrace();
             System.out.println("Error al recuperar información...");
         }
-        return categorias;
+        return tipo;
     }
     public ObservableList<Empleado> fetchEmpleados(){
         ObservableList<Empleado> empleados = FXCollections.observableArrayList();
@@ -253,7 +248,7 @@ public class JardineriaDAO {
                 p = new Empleado(
                         rs.getString("Id_empleado") , rs.getString("Nombre_empleado"), rs.getString("Apellido_empleado"),
                         rs.getString("Puesto_empleado"), rs.getString("Direccion_empleado"), rs.getString("Telefono_empleado"),
-                        rs.getString("Id_codigo_postal"), rs.getDate("Fecha_nacimiento"), rs.getDate("Fecha_contratacion"));
+                        rs.getString("Id_codigo_postal"), rs.getDate("Fecha_nacimiento"), rs.getString("Contraseña"),rs.getDate("Fecha_contratacion"));
                 empleados.add(p);
             }
             rs.close();
@@ -281,20 +276,6 @@ public class JardineriaDAO {
             }
             rs.close();
             st.close();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -448,12 +429,14 @@ public class JardineriaDAO {
     }
     public Boolean insertCliente(Cliente cliente) {
         try {
-            String query = "INSERT INTO Cliente (Id_cliente, Nombre_cliente, Apellido_cliente) "
-                    + " VALUES(?, ?, ?)";
+            String query = "CALL insetaCliente(?, ?, ?, ?, ?, ?);";
             PreparedStatement st =  conn.prepareStatement(query);
             st.setString(1, cliente.getId());
             st.setString(2, cliente.getNombre());
             st.setString(3, cliente.getApellido());
+            st.setString(4, cliente.getCp());
+            st.setString(5, cliente.getDireccion());
+            st.setString(6, cliente.getTelefono());
             st.execute();
             return true;
         } catch (Exception e) {
@@ -496,17 +479,16 @@ public class JardineriaDAO {
     }
     public Boolean insertEmpleado(Empleado empleado) {
         try {
-            String query = "INSERT INTO Empleado (Id_empleado, Nombre_empleado, Apellido_empleado, Puesto_empleado, Direccion_empleado, Telefono_empleado, Fecha_nacimiento, Fecha_contratacion, Id_codigo_postal)"
-                    + " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);";
+            String query = "CALL insertaEmpleado(?, ?, ?, ?, ?, ?, ?, ?, ?);";
             PreparedStatement st =  conn.prepareStatement(query);
             st.setString(1, empleado.getId());
             st.setString(2, empleado.getNombre());
             st.setString(3, empleado.getApellido());
-            st.setString(4, empleado.getPuesto());
-            st.setString(5, empleado.getDireccion());
-            st.setString(6, empleado.getTelefono());
-            st.setDate(7, empleado.getFch_nacimiento());
-            st.setDate(8, empleado.getFch_contratacion());
+            st.setString(4, empleado.getPass());
+            st.setString(5, empleado.getPuesto());
+            st.setString(6, empleado.getDireccion());
+            st.setString(7, empleado.getTelefono());
+            st.setDate(8, empleado.getFch_nacimiento());
             st.setString(9, empleado.getId_postal());
             st.execute();
             return true;
@@ -522,6 +504,32 @@ public class JardineriaDAO {
             String query = "delete from Empleado where Id_empleado= ?";
             PreparedStatement st = conn.prepareStatement(query);
             st.setString(1, id);
+            st.execute();
+            return true;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return false;
+    }
+    public Boolean crearUser(String usr, String pass) {
+        try {
+            String query = "CREATE USER '"+usr+"'@'localhost' identified by '"+pass+"';";
+            PreparedStatement st = conn.prepareStatement(query);
+            st.execute();
+            return true;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return false;
+    }
+    public Boolean darPermiso(String usr, String Tipo) {
+        try {
+            String query;
+            if(Tipo.equalsIgnoreCase("Gerente"))
+                query = "GRANT ALL PRIVILEGES ON Jardineria.* to '"+usr+"'@'localhost';";
+            else
+                query = "GRANT INSERT, UPDATE, SELECT ON Jardineria.* to '"+usr+"'@'localhost';";
+            PreparedStatement st = conn.prepareStatement(query);
             st.execute();
             return true;
         } catch (Exception e) {
@@ -547,6 +555,36 @@ public class JardineriaDAO {
             System.out.println(e.getMessage());
         }
 
+        return false;
+    }
+    public Boolean insertCarrito(Carrito carrito) {
+        try {
+            String query = "call insertaCarrito(?, ?, ?, ?);";
+            PreparedStatement st =  conn.prepareStatement(query);
+            st.setString(1, carrito.getId_pedido());
+            st.setString(2, carrito.getId_producto());
+            st.setInt(3,carrito.getCantidad_pedida() );
+            st.setFloat(4, carrito.getDescuento());
+            st.execute();
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println(e.getMessage());
+        }
+
+        return false;
+    }
+    public Boolean deleteCarrito(String id_Pedido, String id_producto) {
+        try {
+            String query = "delete from Pedido_producto where Id_pedido= ? AND Id_producto = ?";
+            PreparedStatement st = conn.prepareStatement(query);
+            st.setString(1, id_Pedido);
+            st.setString(2, id_producto);
+            st.execute();
+            return true;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
         return false;
     }
     public Boolean deletePedido(String id) {

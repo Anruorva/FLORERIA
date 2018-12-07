@@ -3,9 +3,9 @@ package sample.BD.Model;
 import java.sql.Date;
 
 public class Empleado {
-    String id,nombre, apellido, puesto, direccion, telefono, id_postal;   Date fch_nacimiento, fch_contratacion;
+    String id,nombre, apellido, puesto, direccion, telefono, id_postal, pass;   Date fch_nacimiento, fch_contratacion;
 
-    public Empleado(String id, String nombre, String apellido, String puesto, String direccion, String telefono, String id_postal, Date fch_nacimiento, Date fch_contratacion) {
+    public Empleado(String id, String nombre, String apellido, String puesto, String direccion, String telefono, String id_postal, Date fch_nacimiento, String pass, Date fch_contratacion) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -13,8 +13,25 @@ public class Empleado {
         this.direccion = direccion;
         this.telefono = telefono;
         this.id_postal = id_postal;
+        this.pass = pass;
         this.fch_nacimiento = fch_nacimiento;
         this.fch_contratacion = fch_contratacion;
+    }
+
+    public Date getFch_contratacion() {
+        return fch_contratacion;
+    }
+
+    public void setFch_contratacion(Date fch_contratacion) {
+        this.fch_contratacion = fch_contratacion;
+    }
+
+    public String getPass() {
+        return pass;
+    }
+
+    public void setPass(String pass) {
+        this.pass = pass;
     }
 
     public String getId() {
@@ -81,11 +98,4 @@ public class Empleado {
         this.fch_nacimiento = fch_nacimiento;
     }
 
-    public Date getFch_contratacion() {
-        return fch_contratacion;
-    }
-
-    public void setFch_contratacion(Date fch_contratacion) {
-        this.fch_contratacion = fch_contratacion;
-    }
 }

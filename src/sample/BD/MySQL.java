@@ -15,11 +15,11 @@ import java.util.logging.Logger;
  * @author niluxer
  */
 public class MySQL {
-    private static Connection conn = null;
+    public static Connection conn = null;
     private static String hostname   = "localhost";
-    private static String dbname = "Jardineria";
-    private static String dbuser = "toro";
-    private static String dbpass = "1a2b3c";
+    public static String dbname = "Jardineria";
+    public static String dbuser = "toro";
+    public static String dbpass = "1a2b3c";
     
 
     public static void Connect() {

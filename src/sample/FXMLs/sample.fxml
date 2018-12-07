@@ -6,10 +6,12 @@
 <?import com.jfoenix.controls.JFXPasswordField?>
 <?import com.jfoenix.controls.JFXRadioButton?>
 <?import com.jfoenix.controls.JFXTextField?>
-<?import com.jfoenix.controls.JFXTreeTableView?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.effect.DisplacementMap?>
@@ -28,18 +30,11 @@
       <AnchorPane prefHeight="333.0" prefWidth="418.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
          <children>
             <TableView fx:id="tbl" layoutY="36.0" prefHeight="297.0" prefWidth="622.0" />
-            <JFXButton buttonType="RAISED" layoutX="6.0" layoutY="3.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="83.0" ripplerFill="RED" text="COMPRAS">
-               <font>
-                  <Font name="Bebas" size="15.0" />
-               </font></JFXButton>
-            <JFXButton buttonType="RAISED" layoutX="89.0" layoutY="3.0" mnemonicParsing="false" ripplerFill="#ffcc00" text="VENTAS">
-               <font>
-                  <Font name="Bebas" size="15.0" />
-               </font></JFXButton>
-            <JFXButton fx:id="btnInventario" buttonType="RAISED" layoutX="166.0" layoutY="3.0" mnemonicParsing="false" ripplerFill="#00b900" text="INVENTARIO">
-               <font>
-                  <Font name="Bebas" size="15.0" />
-               </font></JFXButton>
+            <MenuBar>
+                <Menu text="Inventario">
+                    <MenuItem text="Mostrar" fx:id="mnuMostrarProducto" />
+                </Menu>
+            </MenuBar>
          </children>
       </AnchorPane>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="2">
@@ -59,9 +54,9 @@
                   <Font name="Bebas" size="12.0" />
                </font>
             </Label>
-            <JFXTextField editable="false" layoutX="138.0" layoutY="38.0" prefHeight="5.0" prefWidth="72.0" />
-            <JFXTextField editable="false" layoutX="137.0" layoutY="5.0" prefHeight="25.0" prefWidth="73.0" />
-            <JFXTextField editable="false" layoutX="138.0" layoutY="68.0" prefHeight="25.0" prefWidth="79.0" />
+            <JFXTextField editable="false" layoutX="138.0" layoutY="38.0" fx:id="txtIva" prefHeight="5.0" prefWidth="72.0" />
+            <JFXTextField editable="false" layoutX="137.0" layoutY="5.0"  fx:id="txtSubtotal" prefHeight="25.0" prefWidth="73.0" />
+            <JFXTextField editable="false" layoutX="138.0" layoutY="68.0" fx:id="txtTotal" prefHeight="25.0" prefWidth="79.0" />
             <JFXRadioButton fx:id="radioButtonEfectivo" layoutX="33.0" layoutY="32.0" mnemonicParsing="false" prefHeight="13.0" prefWidth="60.0" selected="true" text="EFECTIVO">
                <font>
                   <Font name="Bebas" size="12.0" />
@@ -72,21 +67,21 @@
                   <Font name="Bebas" size="12.0" />
                </font>
             </JFXRadioButton>
-            <JFXButton layoutX="126.0" layoutY="118.0" mnemonicParsing="false" ripplerFill="#0c0d57" text="PAGAR" textFill="#10793d" textOverrun="CLIP">
+            <JFXButton fx:id="btnPagar" layoutX="126.0" layoutY="118.0" mnemonicParsing="false" ripplerFill="#0c0d57" text="PAGAR" textFill="#10793d" textOverrun="CLIP">
                <font>
                   <Font name="Bebas" size="12.0" />
                </font>
             </JFXButton>
          </children>
       </AnchorPane>
-      <AnchorPane prefHeight="200.0" prefWidth="483.0" GridPane.columnIndex="2">
+      <AnchorPane GridPane.columnIndex="2">
          <children>
-            <Label contentDisplay="CENTER" layoutX="1.0" layoutY="66.0" prefHeight="68.0" prefWidth="483.0" text="LA   CASA   DE   LAS   FLORES" textAlignment="CENTER" textFill="#e40e80" textOverrun="CENTER_ELLIPSIS">
+            <Label contentDisplay="CENTER" layoutX="73.0" layoutY="66.0" prefHeight="68.0" prefWidth="483.0" text="LA   CASA   DE   LAS   FLORES" textAlignment="CENTER" textFill="#e40e80" textOverrun="CENTER_ELLIPSIS">
                <font>
                   <Font name="Bebas" size="48.0" />
                </font>
             </Label>
-            <Label alignment="TOP_LEFT" contentDisplay="CENTER" layoutX="1.0" layoutY="23.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="17.0" prefWidth="483.0" text="TECNOLOGICO NACIONAL DE MÉXICO EN CELAYA" textAlignment="CENTER" textOverrun="CLIP" wrapText="true">
+            <Label alignment="TOP_LEFT" contentDisplay="CENTER" layoutX="73.0" layoutY="25.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="17.0" prefWidth="483.0" text="TECNOLOGICO NACIONAL DE MÉXICO EN CELAYA" textAlignment="CENTER" textOverrun="CLIP" wrapText="true">
                <font>
                   <Font name="Tw Cen MT Condensed" size="34.0" />
                </font>
@@ -101,7 +96,7 @@
                   <Cursor fx:constant="NONE" />
                </cursor>
             </Label>
-            <Label layoutX="154.0" layoutY="137.0" prefHeight="26.0" prefWidth="176.0" text="TALLER DE BASE DE DATOS">
+            <Label layoutX="154.0" layoutY="134.0" prefHeight="26.0" prefWidth="321.0" text="TALLER DE BASE DE DATOS">
                <font>
                   <Font name="Tw Cen MT Condensed" size="22.0" />
                </font></Label>
@@ -119,7 +114,8 @@
                            <Image url="@../../images/usuario.png" />
                         </image>
                      </ImageView>
-                     <Label fx:id="txtIdEmpleado" layoutX="132.0" layoutY="105" prefHeight="25.0" prefWidth="60.0" text="0000"><font><Font name="Bebas" size="12.0" /></font></Label>
+                     <Label fx:id="txtIdEmpleado" layoutX="132.0" layoutY="125" prefHeight="20.0" prefWidth="60.0" text="0000"><font><Font name="Bebas" size="12.0" /></font></Label>
+                      <Label fx:id="txtTipoEmpleado" layoutX="132.0" layoutY="105" prefHeight="20.0" prefWidth="60.0" text="xxxx"><font><Font name="Bebas" size="12.0" /></font></Label>
                      <Label layoutX="12.0" layoutY="139.0" prefHeight="49.0" prefWidth="48.0" text="Usuario:">
                         <font>
                            <Font name="Bebas" size="12.0" />
@@ -137,7 +133,7 @@
                            <Font name="Bebas" size="20.0" />
                         </font>
                      </JFXButton>
-                     <JFXButton fx:id="btnRegistrar" buttonType="RAISED" layoutX="15.0" layoutY="257.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="125.0" ripplerFill="WHITE" text="REGISTRO" textFill="RED">
+                     <JFXButton fx:id="btnRegistrarEmpleado" buttonType="RAISED" layoutX="15.0" layoutY="257.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="125.0" ripplerFill="WHITE" text="REGISTRO" textFill="RED">
                         <font>
                            <Font name="Bebas" size="20.0" />
                         </font>
@@ -148,22 +144,49 @@
          </StackPane>
 
       </AnchorPane>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
-         <Label layoutX="20.0" prefHeight="25.0" prefWidth="60.0" text="Clienete:"><font><Font name="Bebas" size="12.0" /></font></Label>
-         <Label fx:id="txtIdCliente" layoutX="80.0" prefHeight="25.0" prefWidth="60.0" text="000000000"><font><Font name="Bebas" size="12.0" /></font></Label>
-         <JFXComboBox fx:id="cboxClientes" layoutX="20.0" layoutY="30.0" prefWidth="200"> </JFXComboBox>
-         <JFXButton fx:id="btnRegistrarCliente" layoutX="20.0" layoutY="70.0" text="Registrar Cliente">
-            <font>
-               <Font name="Bebas" size="15.0" />
-            </font>
-         </JFXButton>
+      <AnchorPane GridPane.columnIndex="1" GridPane.rowIndex="2">
+         <AnchorPane fx:id="anchorcliente">
+            <Label layoutX="20.0" prefHeight="25.0" prefWidth="60.0" text="Clienete:"><font><Font name="Bebas" size="12.0" /></font></Label>
+            <Label fx:id="txtIdCliente" layoutX="80.0" prefHeight="25.0" prefWidth="60.0" text="000000000"><font><Font name="Bebas" size="12.0" /></font></Label>
+            <JFXComboBox fx:id="cboxClientes" layoutX="20.0" layoutY="30.0" prefWidth="200"> </JFXComboBox>
+            <JFXButton fx:id="btnRegistrarCliente" layoutX="20.0" layoutY="70.0" text="Registrar Cliente">
+               <font>
+                  <Font name="Bebas" size="15.0" />
+               </font>
+            </JFXButton>
+         </AnchorPane>
+         <AnchorPane fx:id="newEmpleado" visible="false">
+            <Label layoutX="0.0" layoutY="0" prefHeight="25.0" prefWidth="50.0" text="Id_empleado:"><font><Font name="Bebas" size="8.0" /></font></Label>
+            <JFXTextField fx:id="txtIdE" layoutX="50.0" layoutY="0" prefHeight="25" prefWidth="80" />
+            <Label layoutX="0.0" layoutY="25" prefHeight="25.0" prefWidth="50.0" text="Nombre:"><font><Font name="Bebas" size="8.0" /></font></Label>
+            <JFXTextField fx:id="txtNombreE" layoutX="50.0" layoutY="25" prefHeight="25" prefWidth="80" />
+            <Label layoutX="0.0" layoutY="50" prefHeight="25.0" prefWidth="50.0" text="Apellido:"><font><Font name="Bebas" size="8.0" /></font></Label>
+            <JFXTextField fx:id="txtApellidoE" layoutX="50.0" layoutY="50" prefHeight="25" prefWidth="80" />
+            <Label layoutX="0.0" layoutY="75" prefHeight="25.0" prefWidth="50.0" text="Contraseña:"><font><Font name="Bebas" size="8.0" /></font></Label>
+            <JFXPasswordField fx:id="txtPassE" layoutX="50.0" layoutY="75" prefHeight="25" prefWidth="80" />
+            <Label layoutX="0.0" layoutY="100" prefHeight="25.0" prefWidth="50.0" text="Puesto:"><font><Font name="Bebas" size="8.0" /></font></Label>
+            <JFXComboBox fx:id="cboxTipoE" layoutX="50.0" layoutY="100" prefHeight="25" prefWidth="80" />
+            <Label layoutX="140.0" layoutY="0" prefHeight="25.0" prefWidth="50.0" text="Direccion:"><font><Font name="Bebas" size="8.0" /></font></Label>
+            <JFXTextField fx:id="txtDireccionE" layoutX="190.0" layoutY="0" prefHeight="25" prefWidth="80" />
+            <Label layoutX="140.0" layoutY="25" prefHeight="25.0" prefWidth="50.0" text="Telefono:"><font><Font name="Bebas" size="8.0" /></font></Label>
+            <JFXTextField fx:id="txtTelefonoE" layoutX="190.0" layoutY="25" prefHeight="25" prefWidth="80" />
+            <Label layoutX="140.0" layoutY="50" prefHeight="25.0" prefWidth="50.0" text="Nacimiento:"><font><Font name="Bebas" size="8.0" /></font></Label>
+            <JFXDatePicker fx:id="dateNacimientoE" layoutX="190.0" layoutY="50" prefHeight="25" prefWidth="80" />
+            <Label layoutX="140.0" layoutY="75" prefHeight="25.0" prefWidth="50.0" text="C.Postal:"><font><Font name="Bebas" size="8.0" /></font></Label>
+            <JFXComboBox fx:id="cboxCodigoPE" layoutX="190.0" layoutY="75" prefHeight="25" prefWidth="80" />
+            <JFXButton fx:id="btnHechoRegistroEmpleado" layoutX="160" layoutY="115" text="hecho">
+               <font>
+                  <Font name="Bebas" size="10.0" />
+               </font>
+            </JFXButton>
+         </AnchorPane>
       </AnchorPane>
       <AnchorPane prefHeight="333.0" prefWidth="206.0" GridPane.columnIndex="3" GridPane.rowIndex="1">
-         <JFXButton fx:id="jfxButtunProcederPago" buttonType="RAISED" layoutX="112.0" layoutY="292.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="113.0" ripplerFill="#4e49ab" text="Proceder al Pago">
+         <JFXButton fx:id="btnProcederPago" buttonType="RAISED" layoutX="112.0" layoutY="292.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="113.0" ripplerFill="#4e49ab" text="Proceder al Pago">
             <font>
                <Font name="Bebas" size="12.0" />
             </font></JFXButton>
-         <JFXTreeTableView layoutX="39.0" layoutY="80.0" prefHeight="200.0" prefWidth="200.0" />
+         <TableView fx:id="tblCarrito" layoutX="4.0" layoutY="80.0" prefHeight="200.0" prefWidth="262.0" />
          <ImageView fitHeight="48.0" fitWidth="46.0" layoutX="16.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true">
             <image>
                <Image url="@../../images/carrito.png" />
@@ -198,6 +221,25 @@
             <Label layoutX="300" layoutY="50" prefWidth="90" text="Transportista:"><font><Font name="Bebas" size="13.0" /></font></Label>
             <JFXComboBox fx:id="cboxTransportista" layoutX="400" layoutY="40" prefWidth="200" />
             <JFXButton fx:id="btnRegistrarPedido" layoutX="400" layoutY="90" text="registrar">
+               <font>
+                  <Font name="Bebas" size="15.0" />
+               </font>
+            </JFXButton>
+         </AnchorPane>
+         <AnchorPane fx:id="anchorNewCliente" layoutY="40" visible="false">
+            <Label layoutX="0.0" layoutY="0" prefHeight="25.0" prefWidth="80.0" text="Id_Cliente:"><font><Font name="Bebas" size="12.0" /></font></Label>
+            <JFXTextField fx:id="txtIdEC" layoutX="80.0" layoutY="0" prefHeight="25" prefWidth="120" />
+            <Label layoutX="0.0" layoutY="25" prefHeight="25.0" prefWidth="80.0" text="Nombre:"><font><Font name="Bebas" size="12.0" /></font></Label>
+            <JFXTextField fx:id="txtNombreC" layoutX="80.0" layoutY="25" prefHeight="25" prefWidth="120" />
+            <Label layoutX="0.0" layoutY="50" prefHeight="25.0" prefWidth="80.0" text="Apellido:"><font><Font name="Bebas" size="12.0" /></font></Label>
+            <JFXTextField fx:id="txtApellidoC" layoutX="80.0" layoutY="50" prefHeight="25" prefWidth="120" />
+            <Label layoutX="0.0" layoutY="75" prefHeight="25.0" prefWidth="80.0" text="Telefono:"><font><Font name="Bebas" size="12.0" /></font></Label>
+            <JFXTextField fx:id="txtTelefonoC" layoutX="80.0" layoutY="75" prefHeight="25" prefWidth="120" />
+            <Label layoutX="220.0" layoutY="0" prefHeight="25.0" prefWidth="80.0" text="Codigop:"><font><Font name="Bebas" size="12.0" /></font></Label>
+            <JFXComboBox fx:id="cboxCodigoPC" layoutX="300.0" layoutY="0" prefHeight="25" prefWidth="120" />
+            <Label layoutX="220.0" layoutY="25" prefHeight="25.0" prefWidth="80.0" text="Direccion:"><font><Font name="Bebas" size="12.0" /></font></Label>
+            <JFXTextField fx:id="txtDireccionC" layoutX="300.0" layoutY="25" prefHeight="25" prefWidth="120" />
+            <JFXButton fx:id="btnRegistrarC" layoutX="400" layoutY="65" text="registrar">
                <font>
                   <Font name="Bebas" size="15.0" />
                </font>
